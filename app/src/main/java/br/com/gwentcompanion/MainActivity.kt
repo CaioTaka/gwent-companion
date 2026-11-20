@@ -1,98 +1,188 @@
 package br.com.gwentcompanion
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ColumnScope
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Checkbox
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedButton
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableLongStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import androidx.core.content.FileProvider
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.File
+import java.net.HttpURLConnection
+import java.net.URL
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-private val Ink = Color(0xFF090B09)
-private val Panel = Color(0xFF151914)
-private val PanelRaised = Color(0xFF20261F)
-private val Gold = Color(0xFFD6B46A)
-private val MutedGold = Color(0xFF88764B)
-private val Parchment = Color(0xFFE4D7B9)
-private val Moss = Color(0xFF587849)
-private val SoftText = Color(0xFFB7B9AF)
-private val Danger = Color(0xFF9F4B43)
-
-private enum class AppPage { HOME, SETUP, MATCH }
+private val AppInk = Color(0xFF090B09)
+private val AppGold = Color(0xFFD6B46A)
+private val AppMoss = Color(0xFF587849)
+private val AppParchment = Color(0xFFE4D7B9)
+private val AppSoftText = Color(0xFFB7B9AF)
 
 class MainActivity : ComponentActivity() {
+    private var pendingUpdateFile: File? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.statusBarColor = android.graphics.Color.rgb(9, 11, 9)
         window.navigationBarColor = android.graphics.Color.rgb(9, 11, 9)
-        setContent { GwentTheme { GwentApp() } }
+        setContent { GwentTheme { GwentApp(this) } }
     }
+
+    override fun onResume() {
+        super.onResume()
+        val pending = pendingUpdateFile
+        if (pending != null && pending.exists() && packageManager.canRequestPackageInstalls()) {
+            pendingUpdateFile = null
+            installApk(pending)
+        }
+    }
+
+    fun checkForUpdates(onResult: (String, UpdateInfo?) -> Unit) {
+        lifecycleScope.launch {
+            onResult("Consultando a release pública do GitHub…", null)
+            val result = withContext(Dispatchers.IO) {
+                runCatching {
+                    val connection = URL("https://api.github.com/repos/CaioTaka/gwent-companion/releases/latest").openConnection() as HttpURLConnection
+                    connection.connectTimeout = 15_000
+                    connection.readTimeout = 20_000
+                    connection.setRequestProperty("Accept", "application/vnd.github+json")
+                    connection.inputStream.bufferedReader().use { reader ->
+                        val json = JSONObject(reader.readText())
+                        val tag = json.getString("tag_name").removePrefix("v")
+                        val assetList = json.getJSONArray("assets")
+                        val apk = (0 until assetList.length()).map { assetList.getJSONObject(it) }
+                            .firstOrNull { it.optString("name").endsWith(".apk", true) }
+                            ?: error("A release mais recente não tem APK anexado.")
+                        val installed = packageManager.getPackageInfo(packageName, 0).versionName.orEmpty()
+                        val candidate = UpdateInfo(tag, apk.getString("browser_download_url"), apk.optLong("size"))
+                        if (compareVersions(tag, installed) <= 0) Pair("O Gwent Companion já está atualizado (v$installed).", null)
+                        else Pair("Nova versão v$tag disponível (${"%.1f".format(Locale.US, candidate.size / 1_000_000.0)} MB).", candidate)
+                    }
+                }.getOrElse { Pair("Não foi possível consultar o GitHub: ${it.message ?: "erro de rede"}", null) }
+            }
+            onResult(result.first, result.second)
+        }
+    }
+
+    fun downloadAndInstall(info: UpdateInfo, onStatus: (String) -> Unit) {
+        lifecycleScope.launch {
+            onStatus("Baixando v${info.version} do GitHub…")
+            val fileResult = withContext(Dispatchers.IO) {
+                runCatching {
+                    require(info.url.startsWith("https://github.com/")) { "O link da release não é confiável." }
+                    val connection = URL(info.url).openConnection() as HttpURLConnection
+                    connection.connectTimeout = 20_000
+                    connection.readTimeout = 60_000
+                    val file = File(cacheDir, "gwent-companion-${info.version}.apk")
+                    connection.inputStream.use { input -> file.outputStream().use { output -> input.copyTo(output) } }
+                    file
+                }
+            }
+            fileResult.onSuccess { file ->
+                if (!packageManager.canRequestPackageInstalls()) {
+                    pendingUpdateFile = file
+                    onStatus("APK baixado. O Android precisa permitir instalações vindas deste app; ative a permissão e volte para continuar.")
+                    startActivity(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:$packageName")))
+                } else {
+                    onStatus("Abrindo o instalador do Android. Confirme a atualização na tela do sistema.")
+                    installApk(file)
+                }
+            }.onFailure { onStatus("Falha no download da atualização: ${it.message ?: "erro de rede"}") }
+        }
+    }
+
+    private fun installApk(file: File) {
+        runCatching {
+            val uri = FileProvider.getUriForFile(this, "$packageName.fileprovider", file)
+            val intent = Intent(Intent.ACTION_VIEW).setDataAndType(uri, "application/vnd.android.package-archive")
+                .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+    }
+}
+
+data class UpdateInfo(val version: String, val url: String, val size: Long)
+
+private fun compareVersions(left: String, right: String): Int {
+    val a = Regex("\\d+").findAll(left).map { it.value.toIntOrNull() ?: 0 }.toList()
+    val b = Regex("\\d+").findAll(right).map { it.value.toIntOrNull() ?: 0 }.toList()
+    for (index in 0 until maxOf(a.size, b.size)) {
+        val difference = (a.getOrNull(index) ?: 0).compareTo(b.getOrNull(index) ?: 0)
+        if (difference != 0) return difference
+    }
+    return 0
+}
+
+private object BattleHistoryStore {
+    private const val PREFS = "gwent-companion"
+    private const val HISTORY = "battle-history"
+    fun read(context: Context): List<BattleRecord> = runCatching {
+        val source = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).getString(HISTORY, "[]") ?: "[]"
+        val json = JSONArray(source)
+        List(json.length()) { i ->
+            val item = json.getJSONObject(i)
+            BattleRecord(item.optString("date"), item.optString("mode"), item.optString("rules"),
+                item.optString("nameOne"), item.optString("factionOne"), item.optInt("scoreOne"),
+                item.optString("nameTwo"), item.optString("factionTwo"), item.optInt("scoreTwo"), item.optString("usedCards"))
+        }
+    }.getOrDefault(emptyList())
+
+    fun add(context: Context, record: BattleRecord) {
+        val old = read(context)
+        val json = JSONArray()
+        (old + record).takeLast(100).forEach { item ->
+            json.put(JSONObject().put("date", item.date).put("mode", item.mode).put("rules", item.rules)
+                .put("nameOne", item.nameOne).put("factionOne", item.factionOne).put("scoreOne", item.scoreOne)
+                .put("nameTwo", item.nameTwo).put("factionTwo", item.factionTwo).put("scoreTwo", item.scoreTwo)
+                .put("usedCards", item.usedCards))
+        }
+        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString(HISTORY, json.toString()).apply()
+    }
+
+    fun clear(context: Context) = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().remove(HISTORY).apply()
 }
 
 @Composable
 private fun GwentTheme(content: @Composable () -> Unit) {
     MaterialTheme(colorScheme = darkColorScheme(
-        primary = Gold, onPrimary = Ink, secondary = Moss, background = Ink,
-        surface = Panel, onSurface = Parchment, onBackground = Parchment,
-        outline = MutedGold, error = Danger
+        primary = AppGold, onPrimary = AppInk, secondary = AppMoss, background = AppInk,
+        surface = Color(0xFF151914), onSurface = AppParchment, onBackground = AppParchment,
+        outline = Color(0xFF88764B), error = Color(0xFF9F4B43)
     ), content = content)
 }
 
 @Composable
-private fun GwentApp() {
+private fun GwentApp(activity: MainActivity) {
+    val context = LocalContext.current
+    val catalog = remember { CardCatalog.load(context) }
     var page by remember { mutableStateOf(AppPage.HOME) }
     var factionOne by remember { mutableStateOf(Faction.NORTHERN) }
     var factionTwo by remember { mutableStateOf(Faction.NILFGAARD) }
     var playerOne by remember { mutableStateOf("Jogador 1") }
     var playerTwo by remember { mutableStateOf("Jogador 2") }
+    var leaderOne by remember { mutableStateOf("") }
+    var leaderTwo by remember { mutableStateOf("") }
+    var mode by remember { mutableStateOf(GameMode.ONE_V_ONE) }
+    var rules by remember { mutableStateOf(RuleMode.STANDARD) }
     var cards by remember { mutableStateOf(emptyList<UnitCard>()) }
+    var playedCardCounts by remember { mutableStateOf(emptyMap<String, Int>()) }
     var weather by remember { mutableStateOf(emptySet<CombatRow>()) }
     var horns by remember { mutableStateOf(emptySet<String>()) }
     var round by remember { mutableIntStateOf(1) }
@@ -100,366 +190,135 @@ private fun GwentApp() {
     var gemsTwo by remember { mutableIntStateOf(2) }
     var lastRound by remember { mutableStateOf("") }
     var matchActive by remember { mutableStateOf(false) }
+    var historySaved by remember { mutableStateOf(false) }
     var nextId by remember { mutableLongStateOf(1L) }
-    var addCard by remember { mutableStateOf(false) }
     var infoDialog by remember { mutableStateOf(false) }
+    var updateStatus by remember { mutableStateOf("Toque para consultar a página pública de Releases.") }
+    var availableUpdate by remember { mutableStateOf<UpdateInfo?>(null) }
+    var updateDialog by remember { mutableStateOf(false) }
+    var forceScores by remember { mutableStateOf(loadForceTrack(context)) }
 
     fun score(player: Int): Int = GwentRules.totalStrength(player, cards, weather, horns)
 
     fun beginMatch() {
         cards = emptyList(); weather = emptySet(); horns = emptySet(); round = 1
-        gemsOne = 2; gemsTwo = 2; lastRound = ""
-        matchActive = true
-        page = AppPage.MATCH
+        playedCardCounts = buildMap {
+            if (leaderOne.isNotBlank()) put("Líder", 1)
+            if (leaderTwo.isNotBlank()) put("Líder", getOrDefault("Líder", 0) + 1)
+        }
+        gemsOne = 2; gemsTwo = 2; lastRound = ""; historySaved = false; nextId = 1L
+        matchActive = true; page = AppPage.MATCH
     }
 
-    Box(Modifier.fillMaxSize().background(Ink)) {
-        Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp)) {
-            TopBrand(onHome = { page = AppPage.HOME })
+    fun endRound() {
+        val a = score(1); val b = score(2)
+        val nilfgaardTieWinner = if (factionOne == Faction.NILFGAARD && factionTwo != Faction.NILFGAARD) 1 else if (factionTwo == Faction.NILFGAARD && factionOne != Faction.NILFGAARD) 2 else 0
+        when {
+            a > b || (a == b && nilfgaardTieWinner == 1) -> { gemsTwo = (gemsTwo - 1).coerceAtLeast(0); lastRound = "$playerOne venceu a rodada" }
+            b > a || (a == b && nilfgaardTieWinner == 2) -> { gemsOne = (gemsOne - 1).coerceAtLeast(0); lastRound = "$playerTwo venceu a rodada" }
+            else -> { gemsOne = (gemsOne - 1).coerceAtLeast(0); gemsTwo = (gemsTwo - 1).coerceAtLeast(0); lastRound = "Empate: cada lado perde uma gema" }
+        }
+        val gameFinished = gemsOne == 0 || gemsTwo == 0
+        if (gameFinished && !historySaved) {
+            val countSummary = playedCardCounts.entries.sortedBy { it.key }.joinToString(" · ") { "${it.key}: ${it.value}" }.ifBlank { "Cartas registradas: 0" }
+            val record = BattleRecord(SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(Date()), mode.title, rules.title,
+                playerOne, factionOne.label, a, playerTwo, factionTwo.label, b, countSummary)
+            BattleHistoryStore.add(context, record)
+            historySaved = true
+        }
+        cards = emptyList(); weather = emptySet(); horns = emptySet()
+        if (gameFinished) matchActive = false else round++
+    }
+
+    Box(Modifier.fillMaxSize().background(AppInk)) {
+        Column(Modifier.fillMaxSize().windowInsetsPadding(WindowInsets.safeDrawing)) {
+            TopBrand(onSettings = { page = AppPage.SETTINGS }, onHome = { page = AppPage.HOME }, showHome = page != AppPage.HOME)
             when (page) {
-                AppPage.HOME -> HomeScreen(
-                    hasMatch = matchActive,
-                    onNew = { page = AppPage.SETUP }, onResume = { page = AppPage.MATCH },
-                    onPhoto = { infoDialog = true }
-                )
-                AppPage.SETUP -> SetupScreen(
-                    playerOne, playerTwo, factionOne, factionTwo,
-                    onNameOne = { playerOne = it }, onNameTwo = { playerTwo = it },
-                    onFactionOne = { factionOne = it }, onFactionTwo = { factionTwo = it },
-                    onBack = { page = AppPage.HOME }, onStart = ::beginMatch
-                )
-                AppPage.MATCH -> MatchScreen(
-                    playerOne, playerTwo, factionOne, factionTwo, cards, weather, horns, round,
+                AppPage.HOME -> HomeScreen(matchActive, { page = AppPage.SETUP }, { page = AppPage.MATCH }) { page = it }
+                AppPage.SETUP -> SetupScreen(playerOne, playerTwo, factionOne, factionTwo, mode, rules,
+                    { playerOne = it }, { playerTwo = it }, { factionOne = it; if (leaderOne.isNotBlank() && catalog.none { card -> card.name == leaderOne && card.faction == it.label }) leaderOne = "" },
+                    { factionTwo = it; if (leaderTwo.isNotBlank() && catalog.none { card -> card.name == leaderTwo && card.faction == it.label }) leaderTwo = "" },
+                    { mode = it }, { rules = it }, catalog, leaderOne, leaderTwo, { leaderOne = it }, { leaderTwo = it },
+                    { page = AppPage.HOME }, ::beginMatch)
+                AppPage.MATCH -> MatchScreen(playerOne, playerTwo, factionOne, factionTwo, leaderOne, leaderTwo, cards, weather, horns, round,
                     gemsOne, gemsTwo, score(1), score(2), lastRound,
-                    onAdd = { addCard = true },
-                    onWeather = { row -> weather = if (row in weather) weather - row else weather + row },
-                    onHorn = { player, row ->
-                        val key = GwentRules.hornKey(player, row)
-                        horns = if (key in horns) horns - key else horns + key
-                    },
-                    onClearWeather = { weather = emptySet() },
-                    onRemove = { id -> cards = cards.filterNot { it.id == id } },
-                    onEndRound = {
-                        val a = score(1); val b = score(2)
+                    onPlayCard = { player, card, selectedRow ->
+                        playedCardCounts = playedCardCounts + (card.category to ((playedCardCounts[card.category] ?: 0) + 1))
                         when {
-                            a > b -> { gemsTwo = (gemsTwo - 1).coerceAtLeast(0); lastRound = "$playerOne venceu a rodada" }
-                            b > a -> { gemsOne = (gemsOne - 1).coerceAtLeast(0); lastRound = "$playerTwo venceu a rodada" }
-                            else -> { gemsOne = (gemsOne - 1).coerceAtLeast(0); gemsTwo = (gemsTwo - 1).coerceAtLeast(0); lastRound = "Empate: cada lado perde uma gema" }
+                            card.category == "Líder" -> infoDialog = true
+                            card.category == "Especial" && card.ability == "Clima" -> {
+                                val name = CardCatalog.normalize(card.name)
+                                when {
+                                    "gutes wetter" in name -> weather = emptySet()
+                                    "sturm" in name -> weather = weather + CombatRow.RANGED + CombatRow.SIEGE
+                                    "frost" in name -> weather = weather + CombatRow.CLOSE
+                                    "nebel" in name -> weather = weather + CombatRow.RANGED
+                                    "regen" in name -> weather = weather + CombatRow.SIEGE
+                                    else -> weather = weather + selectedRow
+                                }
+                            }
+                            card.category == "Especial" && card.ability == "Trompa do Comandante" -> {
+                                val key = GwentRules.hornKey(player, selectedRow); horns = if (key in horns) horns - key else horns + key
+                            }
+                            card.category == "Especial" -> infoDialog = true
+                            else -> card.toUnitCard(nextId++, player, selectedRow)?.let { cards = cards + it }
                         }
-                        cards = emptyList(); weather = emptySet(); horns = emptySet()
-                        if (gemsOne > 0 && gemsTwo > 0) round++ else matchActive = false
                     },
-                    onNewGame = { page = AppPage.SETUP }
-                )
-            }
-            Spacer(Modifier.height(26.dp))
-        }
-    }
-
-    if (addCard) {
-        AddUnitDialog(onDismiss = { addCard = false }, onAdd = { name, strength, row, player, hero, ability ->
-            cards = cards + UnitCard(nextId++, name, strength, row, player, hero, ability)
-            addCard = false
-        })
-    }
-    if (infoDialog) {
-        AlertDialog(onDismissRequest = { infoDialog = false }, containerColor = PanelRaised,
-            title = { Text("Leitura por foto", color = Gold, fontFamily = FontFamily.Serif) },
-            text = { Text("A leitura automática entra numa próxima etapa. O placar, as cartas e as regras continuarão disponíveis sem internet.", color = Parchment) },
-            confirmButton = { TextButton(onClick = { infoDialog = false }) { Text("Entendi", color = Gold) } })
-    }
-}
-
-@Composable
-private fun TopBrand(onHome: () -> Unit) {
-    Row(Modifier.fillMaxWidth().padding(top = 14.dp, bottom = 18.dp).clickable(onClick = onHome), verticalAlignment = Alignment.CenterVertically) {
-        Crest(42.dp)
-        Spacer(Modifier.width(11.dp))
-        Column {
-            Text("GWENT", color = Parchment, fontFamily = FontFamily.Serif, fontSize = 20.sp, fontWeight = FontWeight.Bold, letterSpacing = 3.sp)
-            Text("COMPANION  ·  2ª EDIÇÃO", color = Gold, fontSize = 9.sp, letterSpacing = 1.6.sp)
-        }
-        Spacer(Modifier.weight(1f))
-        Text("●", color = Moss, fontSize = 12.sp)
-        Spacer(Modifier.width(6.dp))
-        Text("OFFLINE", color = SoftText, fontSize = 9.sp, letterSpacing = 1.sp)
-    }
-}
-
-@Composable
-private fun Crest(size: androidx.compose.ui.unit.Dp) {
-    Canvas(Modifier.size(size)) {
-        val c = center
-        val r = this.size.minDimension * .45f
-        drawCircle(MutedGold, r, c, style = Stroke(width = 1.3.dp.toPx()))
-        drawCircle(Color(0xFF26281E), r * .78f, c)
-        val shield = Path().apply {
-            moveTo(c.x, c.y - r * .56f); lineTo(c.x + r * .48f, c.y - r * .28f)
-            lineTo(c.x + r * .37f, c.y + r * .28f); lineTo(c.x, c.y + r * .62f)
-            lineTo(c.x - r * .37f, c.y + r * .28f); lineTo(c.x - r * .48f, c.y - r * .28f); close()
-        }
-        drawPath(shield, Gold, style = Stroke(width = 1.5.dp.toPx(), cap = StrokeCap.Round))
-        drawLine(Gold, Offset(c.x - r * .25f, c.y + r * .12f), Offset(c.x + r * .25f, c.y - r * .12f), 1.dp.toPx(), StrokeCap.Round)
-        drawLine(Gold, Offset(c.x - r * .25f, c.y - r * .12f), Offset(c.x + r * .25f, c.y + r * .12f), 1.dp.toPx(), StrokeCap.Round)
-    }
-}
-
-@Composable
-private fun HomeScreen(hasMatch: Boolean, onNew: () -> Unit, onResume: () -> Unit, onPhoto: () -> Unit) {
-    Spacer(Modifier.height(12.dp))
-    Box(Modifier.fillMaxWidth().clip(RoundedCornerShape(24.dp)).background(Panel).border(1.dp, MutedGold.copy(alpha = .55f), RoundedCornerShape(24.dp)).padding(22.dp)) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally, modifier = Modifier.fillMaxWidth()) {
-            Crest(100.dp)
-            Spacer(Modifier.height(16.dp))
-            Text("CAMPO DE BATALHA", color = Gold, fontSize = 10.sp, letterSpacing = 2.3.sp)
-            Spacer(Modifier.height(8.dp))
-            Text("A guerra se decide\nna contagem.", color = Parchment, textAlign = TextAlign.Center, fontFamily = FontFamily.Serif, fontSize = 29.sp, lineHeight = 34.sp)
-            Spacer(Modifier.height(11.dp))
-            Text("Placar e regras para Gwent: O Jogo de Cartas Lendário", color = SoftText, textAlign = TextAlign.Center, fontSize = 12.sp, lineHeight = 18.sp)
-            Spacer(Modifier.height(23.dp))
-            PrimaryButton(if (hasMatch) "NOVA PARTIDA" else "COMEÇAR PARTIDA", onNew)
-            if (hasMatch) {
-                Spacer(Modifier.height(9.dp))
-                OutlinedButton(onClick = onResume, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(14.dp)) { Text("RETOMAR PARTIDA", color = Parchment, letterSpacing = 1.sp) }
-            }
-        }
-    }
-    Spacer(Modifier.height(17.dp))
-    Text("ATALHOS DE MESA", color = MutedGold, fontSize = 10.sp, letterSpacing = 1.8.sp)
-    Spacer(Modifier.height(9.dp))
-    Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-        ShortcutCard("LEITURA", "Conferir o tabuleiro", "◉", onPhoto, Modifier.weight(1f))
-        ShortcutCard("CARTAS", "Consultar catálogo", "✦", onPhoto, Modifier.weight(1f))
-    }
-    Spacer(Modifier.height(15.dp))
-    Text("FEITO PARA A MESA", color = Gold, fontFamily = FontFamily.Serif, fontSize = 17.sp)
-    Spacer(Modifier.height(5.dp))
-    Text("Sem anúncios. Sem conta. O núcleo da partida funciona offline.", color = SoftText, fontSize = 12.sp, lineHeight = 18.sp)
-}
-
-@Composable
-private fun ShortcutCard(title: String, subtitle: String, mark: String, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Column(modifier.clip(RoundedCornerShape(18.dp)).background(PanelRaised).border(1.dp, Color(0xFF343B31), RoundedCornerShape(18.dp)).clickable(onClick = onClick).padding(14.dp)) {
-        Text(mark, color = Gold, fontFamily = FontFamily.Serif, fontSize = 24.sp)
-        Spacer(Modifier.height(10.dp))
-        Text(title, color = Gold, fontSize = 9.sp, letterSpacing = 1.4.sp)
-        Text(subtitle, color = Parchment, fontSize = 12.sp, lineHeight = 16.sp)
-    }
-}
-
-@Composable
-private fun SetupScreen(
-    nameOne: String, nameTwo: String, factionOne: Faction, factionTwo: Faction,
-    onNameOne: (String) -> Unit, onNameTwo: (String) -> Unit,
-    onFactionOne: (Faction) -> Unit, onFactionTwo: (Faction) -> Unit,
-    onBack: () -> Unit, onStart: () -> Unit
-) {
-    ScreenHeading("Preparar a partida", "Escolha os comandantes e as facções.")
-    PlayerSetup("LADO DO JOGADOR 1", nameOne, factionOne, onNameOne, onFactionOne)
-    Spacer(Modifier.height(12.dp))
-    PlayerSetup("LADO DO JOGADOR 2", nameTwo, factionTwo, onNameTwo, onFactionTwo)
-    Spacer(Modifier.height(16.dp))
-    InfoStrip("2 gemas por jogador", "A primeira pessoa a perder as duas gemas perde a partida.")
-    Spacer(Modifier.height(20.dp))
-    PrimaryButton("ABRIR O TABULEIRO", onStart)
-    Spacer(Modifier.height(8.dp))
-    TextButton(onClick = onBack, modifier = Modifier.fillMaxWidth()) { Text("VOLTAR", color = SoftText, letterSpacing = 1.sp) }
-}
-
-@Composable
-private fun PlayerSetup(title: String, name: String, faction: Faction, onName: (String) -> Unit, onFaction: (Faction) -> Unit) {
-    PanelCard {
-        Text(title, color = Gold, fontSize = 9.sp, letterSpacing = 1.5.sp)
-        Spacer(Modifier.height(10.dp))
-        OutlinedTextField(value = name, onValueChange = onName, modifier = Modifier.fillMaxWidth(), singleLine = true, label = { Text("Nome na mesa") })
-        Spacer(Modifier.height(12.dp))
-        Text("FACÇÃO", color = SoftText, fontSize = 9.sp, letterSpacing = 1.3.sp)
-        Spacer(Modifier.height(8.dp))
-        Column(verticalArrangement = Arrangement.spacedBy(7.dp)) {
-            Faction.entries.chunked(3).forEach { line ->
-                Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) {
-                    line.forEach { option -> FactionChip(option, option == faction, { onFaction(option) }, Modifier.weight(1f)) }
-                    repeat(3 - line.size) { Spacer(Modifier.weight(1f)) }
+                    onWeather = { row -> weather = if (row in weather) weather - row else weather + row },
+                    onHorn = { player, row -> val key = GwentRules.hornKey(player, row); horns = if (key in horns) horns - key else horns + key },
+                    onClearWeather = { weather = emptySet() }, onRemove = { id -> cards = cards.filterNot { it.id == id } },
+                    onReorder = { id, delta -> cards = reorderCard(cards, id, delta) }, onEndRound = ::endRound,
+                    onNewGame = { page = AppPage.SETUP }, catalog = catalog)
+                AppPage.RULES -> BattleRulesScreen(catalog)
+                AppPage.CATALOG -> CatalogScreen(catalog) { page = AppPage.HOME }
+                AppPage.FORCE_TRACK -> ForceTrackScreen(forceScores, { player, row, delta ->
+                    val mutable = forceScores.map { it.toMutableList() }.toMutableList()
+                    mutable[player][row] = (mutable[player][row] + delta).coerceAtLeast(0)
+                    forceScores = mutable.map { it.toList() }; saveForceTrack(context, forceScores)
+                }, {
+                    forceScores = listOf(listOf(0, 0, 0), listOf(0, 0, 0)); saveForceTrack(context, forceScores)
+                })
+                AppPage.HISTORY -> HistoryScreen(BattleHistoryStore.read(context)) { BattleHistoryStore.clear(context); page = AppPage.HISTORY }
+                AppPage.SETTINGS -> SettingsScreen(updateStatus) {
+                    availableUpdate = null
+                    activity.checkForUpdates { status, update -> updateStatus = status; availableUpdate = update; updateDialog = update != null }
                 }
+                AppPage.RECOGNITION -> RecognitionScreen { infoDialog = true }
             }
         }
     }
+    if (infoDialog) AlertDialog(onDismissRequest = { infoDialog = false }, containerColor = Color(0xFF20261F),
+        title = { Text("Em desenvolvimento", color = AppGold) },
+        text = { Text("Reconhecimento por imagem e leitura detalhada do texto das cartas ainda não estão disponíveis nesta versão.", color = AppParchment) },
+        confirmButton = { TextButton(onClick = { infoDialog = false }) { Text("ENTENDI", color = AppGold) } })
+    if (updateDialog && availableUpdate != null) AlertDialog(onDismissRequest = { updateDialog = false }, containerColor = Color(0xFF20261F),
+        title = { Text("Atualização disponível", color = AppGold) },
+        text = { Text("A versão v${availableUpdate!!.version} está disponível. O Android vai abrir a confirmação oficial de instalação depois do download.", color = AppParchment) },
+        confirmButton = { TextButton(onClick = { updateDialog = false; activity.downloadAndInstall(availableUpdate!!) { updateStatus = it } }) { Text("BAIXAR E INSTALAR", color = AppGold) } },
+        dismissButton = { TextButton(onClick = { updateDialog = false }) { Text("DEPOIS", color = AppSoftText) } })
 }
 
-@Composable
-private fun FactionChip(faction: Faction, selected: Boolean, onClick: () -> Unit, modifier: Modifier = Modifier) {
-    Row(modifier.clip(RoundedCornerShape(12.dp)).background(if (selected) faction.tint.copy(alpha = .19f) else PanelRaised).border(1.dp, if (selected) faction.tint else Color(0xFF343B31), RoundedCornerShape(12.dp)).clickable(onClick = onClick).padding(horizontal = 9.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.Center) {
-        Box(Modifier.size(20.dp).clip(CircleShape).background(faction.tint.copy(alpha = .24f)), contentAlignment = Alignment.Center) { Text(faction.mark, color = faction.tint, fontSize = 10.sp, fontWeight = FontWeight.Bold) }
-        Spacer(Modifier.width(5.dp))
-        Text(faction.label, color = if (selected) Parchment else SoftText, fontSize = 9.sp, maxLines = 1)
+private fun reorderCard(cards: List<UnitCard>, id: Long, delta: Int): List<UnitCard> {
+    val index = cards.indexOfFirst { it.id == id }
+    if (index < 0) return cards
+    val related = cards.indices.filter { cards[it].row == cards[index].row && cards[it].player == cards[index].player }
+    val position = related.indexOf(index)
+    val targetPosition = (position + delta).coerceIn(0, related.lastIndex)
+    if (targetPosition == position) return cards
+    return cards.toMutableList().also { list ->
+        val target = related[targetPosition]
+        val current = list[index]
+        list[index] = list[target]
+        list[target] = current
     }
 }
 
-@Composable
-private fun MatchScreen(
-    playerOne: String, playerTwo: String, factionOne: Faction, factionTwo: Faction,
-    cards: List<UnitCard>, weather: Set<CombatRow>, horns: Set<String>, round: Int,
-    gemsOne: Int, gemsTwo: Int, scoreOne: Int, scoreTwo: Int, lastRound: String,
-    onAdd: () -> Unit, onWeather: (CombatRow) -> Unit, onHorn: (Int, CombatRow) -> Unit, onClearWeather: () -> Unit,
-    onRemove: (Long) -> Unit, onEndRound: () -> Unit, onNewGame: () -> Unit
-) {
-    val finished = gemsOne == 0 || gemsTwo == 0
-    ScreenHeading(if (finished) "Partida encerrada" else "Rodada $round", if (finished) "Resultado final" else "Ajuste as cartas e acompanhe a força total.")
-    Row(horizontalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.fillMaxWidth()) {
-        ScorePanel(playerOne, factionOne, scoreOne, gemsOne, Modifier.weight(1f))
-        ScorePanel(playerTwo, factionTwo, scoreTwo, gemsTwo, Modifier.weight(1f))
-    }
-    Spacer(Modifier.height(12.dp))
-    if (lastRound.isNotBlank()) InfoStrip(if (finished) "FIM DE JOGO" else "RODADA ANTERIOR", if (finished) if (gemsOne == 0 && gemsTwo == 0) "A partida terminou empatada." else "${if (gemsOne > 0) playerOne else playerTwo} venceu." else lastRound)
-    Spacer(Modifier.height(13.dp))
-    Row(verticalAlignment = Alignment.CenterVertically) {
-        Text("FILEIRAS DE COMBATE", color = Gold, fontSize = 10.sp, letterSpacing = 1.7.sp)
-        Spacer(Modifier.weight(1f))
-        Text("CLIMA ATIVO ${if (weather.isEmpty()) "·" else "${weather.size}"}", color = SoftText, fontSize = 9.sp)
-    }
-    Spacer(Modifier.height(8.dp))
-    CombatRow.entries.forEach { row ->
-        RowPanel(row, cards.filter { it.row == row }, weather.contains(row), horns, playerOne, playerTwo, onWeather, onHorn, onRemove)
-        Spacer(Modifier.height(8.dp))
-    }
-    Spacer(Modifier.height(7.dp))
-    Row(horizontalArrangement = Arrangement.spacedBy(9.dp)) {
-        OutlinedButton(onClick = onClearWeather, modifier = Modifier.weight(1f).height(48.dp), shape = RoundedCornerShape(14.dp), enabled = weather.isNotEmpty()) { Text("LIMPAR CLIMA", color = Parchment, fontSize = 10.sp, letterSpacing = .8.sp) }
-        Button(onClick = onAdd, modifier = Modifier.weight(1f).height(48.dp), shape = RoundedCornerShape(14.dp), colors = ButtonDefaults.buttonColors(containerColor = Moss, contentColor = Parchment), enabled = !finished) { Text("＋  ADICIONAR CARTA", fontSize = 10.sp, letterSpacing = .6.sp) }
-    }
-    Spacer(Modifier.height(9.dp))
-    Button(onClick = onEndRound, modifier = Modifier.fillMaxWidth().height(50.dp), shape = RoundedCornerShape(14.dp), colors = ButtonDefaults.buttonColors(containerColor = Gold, contentColor = Ink), enabled = !finished) { Text("ENCERRAR RODADA", fontWeight = FontWeight.Bold, letterSpacing = 1.sp) }
-    Spacer(Modifier.height(5.dp))
-    Text("Clima → Laço → Moral → Trompa · heróis são imunes a efeitos.", color = SoftText, fontSize = 10.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
-    if (finished) {
-        Spacer(Modifier.height(12.dp))
-        OutlinedButton(onClick = onNewGame, modifier = Modifier.fillMaxWidth(), shape = RoundedCornerShape(14.dp)) { Text("NOVA PARTIDA", color = Gold, letterSpacing = 1.sp) }
-    }
+private fun loadForceTrack(context: Context): List<List<Int>> {
+    val raw = context.getSharedPreferences("gwent-companion", Context.MODE_PRIVATE).getString("force-track", "0,0,0|0,0,0") ?: "0,0,0|0,0,0"
+    return runCatching { raw.split('|').map { side -> side.split(',').map { it.toInt().coerceAtLeast(0) }.take(3).let { if (it.size == 3) it else listOf(0, 0, 0) } }.take(2).let { if (it.size == 2) it else listOf(listOf(0, 0, 0), listOf(0, 0, 0)) } }.getOrDefault(listOf(listOf(0, 0, 0), listOf(0, 0, 0)))
 }
 
-@Composable
-private fun ScorePanel(name: String, faction: Faction, score: Int, gems: Int, modifier: Modifier = Modifier) {
-    Column(modifier.clip(RoundedCornerShape(17.dp)).background(Panel).border(1.dp, faction.tint.copy(alpha = .55f), RoundedCornerShape(17.dp)).padding(13.dp)) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Box(Modifier.size(24.dp).clip(CircleShape).background(faction.tint.copy(alpha = .20f)), contentAlignment = Alignment.Center) { Text(faction.mark, color = faction.tint, fontSize = 11.sp, fontWeight = FontWeight.Bold) }
-            Spacer(Modifier.width(7.dp))
-            Column {
-                Text(name, color = Parchment, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, maxLines = 1)
-                Text(faction.label.uppercase(), color = faction.tint, fontSize = 8.sp, letterSpacing = .7.sp, maxLines = 1)
-            }
-        }
-        Spacer(Modifier.height(9.dp))
-        Row(verticalAlignment = Alignment.Bottom) {
-            Text(score.toString(), color = Gold, fontSize = 32.sp, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.width(5.dp)); Text("FORÇA", color = SoftText, fontSize = 8.sp, modifier = Modifier.padding(bottom = 5.dp), letterSpacing = 1.sp)
-            Spacer(Modifier.weight(1f))
-            Text("● ".repeat(gems).trim(), color = Color(0xFFB84C43), fontSize = 12.sp)
-        }
-    }
-}
-
-@Composable
-private fun RowPanel(row: CombatRow, cards: List<UnitCard>, weather: Boolean, horns: Set<String>, playerOne: String, playerTwo: String, onWeather: (CombatRow) -> Unit, onHorn: (Int, CombatRow) -> Unit, onRemove: (Long) -> Unit) {
-    PanelCard {
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            Column(Modifier.weight(1f)) {
-                Text(row.short, color = Parchment, fontFamily = FontFamily.Serif, fontSize = 14.sp, letterSpacing = .6.sp)
-                Text("${cards.count { it.player == 1 }} + ${cards.count { it.player == 2 }} cartas", color = SoftText, fontSize = 10.sp)
-            }
-            Text("${GwentRules.rowStrength(1, row, cards, if (weather) setOf(row) else emptySet(), horns)} : ${GwentRules.rowStrength(2, row, cards, if (weather) setOf(row) else emptySet(), horns)}", color = Gold, fontSize = 15.sp, fontFamily = FontFamily.Serif, fontWeight = FontWeight.Bold)
-            Spacer(Modifier.width(8.dp))
-            TextButton(onClick = { onWeather(row) }) { Text(if (weather) "TEMPO" else "CLIMA", color = if (weather) Gold else SoftText, fontSize = 9.sp) }
-        }
-        Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
-            SmallChoice("TROMPA P1", GwentRules.hornKey(1, row) in horns) { onHorn(1, row) }
-            SmallChoice("TROMPA P2", GwentRules.hornKey(2, row) in horns) { onHorn(2, row) }
-        }
-        if (weather) Text("EFEITO DE CLIMA · unidades comuns valem 1", color = Gold, fontSize = 8.sp, letterSpacing = .7.sp)
-        cards.forEach { card ->
-            Row(Modifier.fillMaxWidth().padding(top = 7.dp).clip(RoundedCornerShape(10.dp)).background(PanelRaised).padding(horizontal = 10.dp, vertical = 8.dp), verticalAlignment = Alignment.CenterVertically) {
-                Text(if (card.player == 1) "P1" else "P2", color = if (card.player == 1) Moss else factionAccent(card.player), fontSize = 8.sp, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.width(8.dp))
-                Column(Modifier.weight(1f)) {
-                    Text(card.name + if (card.hero) "  ·  HERÓI" else "", color = Parchment, fontSize = 11.sp, maxLines = 1)
-                    Text(if (card.player == 1) playerOne else playerTwo, color = SoftText, fontSize = 8.sp)
-                }
-                Text(GwentRules.effectiveStrength(card, cards, if (weather) setOf(row) else emptySet(), horns).toString(), color = Gold, fontSize = 16.sp, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.width(10.dp))
-                Text("×", color = SoftText, fontSize = 16.sp, modifier = Modifier.clickable { onRemove(card.id) }.padding(horizontal = 4.dp))
-            }
-        }
-    }
-}
-
-private fun factionAccent(player: Int) = if (player == 1) Moss else Color(0xFFB8524A)
-
-@Composable
-private fun AddUnitDialog(onDismiss: () -> Unit, onAdd: (String, Int, CombatRow, Int, Boolean, UnitAbility) -> Unit) {
-    var name by remember { mutableStateOf("") }
-    var strength by remember { mutableStateOf("4") }
-    var row by remember { mutableStateOf(CombatRow.CLOSE) }
-    var player by remember { mutableIntStateOf(1) }
-    var hero by remember { mutableStateOf(false) }
-    var ability by remember { mutableStateOf(UnitAbility.NONE) }
-    AlertDialog(onDismissRequest = onDismiss, containerColor = PanelRaised,
-        title = { Text("Registrar carta", color = Gold, fontFamily = FontFamily.Serif) },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(9.dp)) {
-                OutlinedTextField(value = name, onValueChange = { name = it }, singleLine = true, label = { Text("Nome da carta") })
-                OutlinedTextField(value = strength, onValueChange = { value -> strength = value.filter(Char::isDigit).take(2) }, singleLine = true, label = { Text("Força impressa") })
-                Text("FILEIRA", color = Gold, fontSize = 9.sp, letterSpacing = 1.sp)
-                Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) { CombatRow.entries.forEach { option -> SmallChoice(option.short, row == option) { row = option } } }
-                Text("LADO", color = Gold, fontSize = 9.sp, letterSpacing = 1.sp)
-                Row(horizontalArrangement = Arrangement.spacedBy(7.dp)) { SmallChoice("JOGADOR 1", player == 1) { player = 1 }; SmallChoice("JOGADOR 2", player == 2) { player = 2 } }
-                Text("HABILIDADE", color = Gold, fontSize = 9.sp, letterSpacing = 1.sp)
-                Row(horizontalArrangement = Arrangement.spacedBy(5.dp)) {
-                    UnitAbility.entries.forEach { option -> SmallChoice(option.label.uppercase(), ability == option) { ability = option } }
-                }
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Checkbox(checked = hero, onCheckedChange = { hero = it })
-                    Text("Herói (imune a efeitos)", color = Parchment, fontSize = 12.sp)
-                }
-            }
-        },
-        confirmButton = { TextButton(onClick = { onAdd(name.ifBlank { "Unidade" }, strength.toIntOrNull() ?: 0, row, player, hero, ability) }) { Text("ADICIONAR", color = Gold) } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("CANCELAR", color = SoftText) } })
-}
-
-@Composable
-private fun SmallChoice(label: String, selected: Boolean, onClick: () -> Unit) {
-    Text(label, color = if (selected) Ink else Parchment, fontSize = 8.sp, letterSpacing = .3.sp,
-        modifier = Modifier.clip(RoundedCornerShape(10.dp)).background(if (selected) Gold else Panel).clickable(onClick = onClick).padding(horizontal = 8.dp, vertical = 9.dp))
-}
-
-@Composable
-private fun ScreenHeading(title: String, subtitle: String) {
-    Spacer(Modifier.height(4.dp))
-    Text(title, color = Parchment, fontFamily = FontFamily.Serif, fontSize = 27.sp, fontWeight = FontWeight.SemiBold)
-    Spacer(Modifier.height(4.dp))
-    Text(subtitle, color = SoftText, fontSize = 12.sp, lineHeight = 17.sp)
-    Spacer(Modifier.height(16.dp))
-}
-
-@Composable
-private fun PanelCard(content: @Composable ColumnScope.() -> Unit) {
-    Column(Modifier.fillMaxWidth().clip(RoundedCornerShape(17.dp)).background(Panel).border(1.dp, Color(0xFF30362C), RoundedCornerShape(17.dp)).padding(14.dp), content = content)
-}
-
-@Composable
-private fun InfoStrip(title: String, body: String) {
-    Row(Modifier.fillMaxWidth().clip(RoundedCornerShape(14.dp)).background(Color(0xFF1C241B)).border(1.dp, Moss.copy(alpha = .7f), RoundedCornerShape(14.dp)).padding(13.dp), verticalAlignment = Alignment.CenterVertically) {
-        Box(Modifier.size(4.dp, 35.dp).clip(RoundedCornerShape(3.dp)).background(Moss))
-        Spacer(Modifier.width(10.dp))
-        Column {
-            Text(title, color = Gold, fontSize = 9.sp, letterSpacing = 1.sp)
-            Text(body, color = Parchment, fontSize = 11.sp, lineHeight = 15.sp)
-        }
-    }
-}
-
-@Composable
-private fun PrimaryButton(label: String, onClick: () -> Unit) {
-    Button(onClick = onClick, modifier = Modifier.fillMaxWidth().height(51.dp), shape = RoundedCornerShape(14.dp), colors = ButtonDefaults.buttonColors(containerColor = Gold, contentColor = Ink)) {
-        Text(label, fontWeight = FontWeight.Bold, fontSize = 12.sp, letterSpacing = 1.1.sp)
-    }
+private fun saveForceTrack(context: Context, scores: List<List<Int>>) {
+    val serialized = scores.joinToString("|") { side -> side.joinToString(",") }
+    context.getSharedPreferences("gwent-companion", Context.MODE_PRIVATE).edit().putString("force-track", serialized).apply()
 }

@@ -1,0 +1,2842 @@
+[
+  {
+    "id": "Monstros:Eredin Brèacc Glas: Der Trügerische",
+    "faction": "Monstros",
+    "name": "Eredin Brèacc Glas: Der Trügerische",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Eredin: Bringer des Todes",
+    "faction": "Monstros",
+    "name": "Eredin: Bringer des Todes",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Eredin: Führer der Roten Reiter",
+    "faction": "Monstros",
+    "name": "Eredin: Führer der Roten Reiter",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Eredin: Zerstörer der Welten",
+    "faction": "Monstros",
+    "name": "Eredin: Zerstörer der Welten",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Eredin: König der Wilden Jagd",
+    "faction": "Monstros",
+    "name": "Eredin: König der Wilden Jagd",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Klirrende Kälte",
+    "faction": "Monstros",
+    "name": "Klirrende Kälte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Gutes Wetter",
+    "faction": "Monstros",
+    "name": "Gutes Wetter",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Horn des Kommandanten",
+    "faction": "Monstros",
+    "name": "Horn des Kommandanten",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Trompa do Comandante",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Finte",
+    "faction": "Monstros",
+    "name": "Finte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Isca",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Extrem dichter Nebel Nebel",
+    "faction": "Monstros",
+    "name": "Extrem dichter Nebel Nebel",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Verbrennen",
+    "faction": "Monstros",
+    "name": "Verbrennen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Queimar",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Skellige-Sturm",
+    "faction": "Monstros",
+    "name": "Skellige-Sturm",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Strömender Regen",
+    "faction": "Monstros",
+    "name": "Strömender Regen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Geralt von Riva",
+    "faction": "Monstros",
+    "name": "Geralt von Riva",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Cirilla Fiona Elen Riannon",
+    "faction": "Monstros",
+    "name": "Cirilla Fiona Elen Riannon",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Draug",
+    "faction": "Monstros",
+    "name": "Draug",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Imlerith",
+    "faction": "Monstros",
+    "name": "Imlerith",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Waldschrat",
+    "faction": "Monstros",
+    "name": "Waldschrat",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Kayran",
+    "faction": "Monstros",
+    "name": "Kayran",
+    "strength": 8,
+    "row": "À distância / corpo a corpo",
+    "category": "Herói",
+    "ability": "Agilidade + Moral",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Gehörnte Verteidigungskraft",
+    "faction": "Monstros",
+    "name": "Gehörnte Verteidigungskraft",
+    "strength": 8,
+    "row": "Corpo a corpo",
+    "category": "Reserva",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Monstros:Triss Merigold",
+    "faction": "Monstros",
+    "name": "Triss Merigold",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Yennefer von Vengerberg",
+    "faction": "Monstros",
+    "name": "Yennefer von Vengerberg",
+    "strength": 7,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Villentretenmerth",
+    "faction": "Monstros",
+    "name": "Villentretenmerth",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Kröte",
+    "faction": "Monstros",
+    "name": "Kröte",
+    "strength": 7,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Olgierd von Everec",
+    "faction": "Monstros",
+    "name": "Olgierd von Everec",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade + Moral",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Vesemir",
+    "faction": "Monstros",
+    "name": "Vesemir",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Muhme: Brauerin",
+    "faction": "Monstros",
+    "name": "Muhme: Brauerin",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Muhme: Weberin",
+    "faction": "Monstros",
+    "name": "Muhme: Weberin",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Muhme: Flüsterin",
+    "faction": "Monstros",
+    "name": "Muhme: Flüsterin",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Erdgenius",
+    "faction": "Monstros",
+    "name": "Erdgenius",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Unhold",
+    "faction": "Monstros",
+    "name": "Unhold",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Feuergenius",
+    "faction": "Monstros",
+    "name": "Feuergenius",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Krappenspinnen-Ungetüm",
+    "faction": "Monstros",
+    "name": "Krappenspinnen-Ungetüm",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Emiel Regis Rohellec Terzieff Godefroy",
+    "faction": "Monstros",
+    "name": "Emiel Regis Rohellec Terzieff Godefroy",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Zoltan Chivay",
+    "faction": "Monstros",
+    "name": "Zoltan Chivay",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Gabelschwanz",
+    "faction": "Monstros",
+    "name": "Gabelschwanz",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Einschüchterer",
+    "faction": "Monstros",
+    "name": "Einschüchterer",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Gruftweib",
+    "faction": "Monstros",
+    "name": "Gruftweib",
+    "strength": 5,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Greif",
+    "faction": "Monstros",
+    "name": "Greif",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Eisriese",
+    "faction": "Monstros",
+    "name": "Eisriese",
+    "strength": 5,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Pestmaid",
+    "faction": "Monstros",
+    "name": "Pestmaid",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Vampir: Katakan",
+    "faction": "Monstros",
+    "name": "Vampir: Katakan",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Werwolf",
+    "faction": "Monstros",
+    "name": "Werwolf",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Gaunter O´Dim: Finsternis",
+    "faction": "Monstros",
+    "name": "Gaunter O´Dim: Finsternis",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Fehlgeborener",
+    "faction": "Monstros",
+    "name": "Fehlgeborener",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Vampir: Bruxa",
+    "faction": "Monstros",
+    "name": "Vampir: Bruxa",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Vampir: Ekimmara",
+    "faction": "Monstros",
+    "name": "Vampir: Ekimmara",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Vampir: Flatterer",
+    "faction": "Monstros",
+    "name": "Vampir: Flatterer",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Vampir: Garkain",
+    "faction": "Monstros",
+    "name": "Vampir: Garkain",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Krabbenspinne",
+    "faction": "Monstros",
+    "name": "Krabbenspinne",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Plötze",
+    "faction": "Monstros",
+    "name": "Plötze",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Gaunter O´Dim",
+    "faction": "Monstros",
+    "name": "Gaunter O´Dim",
+    "strength": 2,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Rittersporn",
+    "faction": "Monstros",
+    "name": "Rittersporn",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Trompa do Comandante",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Kelajno-Harpyie",
+    "faction": "Monstros",
+    "name": "Kelajno-Harpyie",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Gorgo",
+    "faction": "Monstros",
+    "name": "Gorgo",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Endriaga",
+    "faction": "Monstros",
+    "name": "Endriaga",
+    "strength": 2,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Nebling",
+    "faction": "Monstros",
+    "name": "Nebling",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Gargoyle",
+    "faction": "Monstros",
+    "name": "Gargoyle",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Harpyie",
+    "faction": "Monstros",
+    "name": "Harpyie",
+    "strength": 2,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Nekker",
+    "faction": "Monstros",
+    "name": "Nekker",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Wyvern",
+    "faction": "Monstros",
+    "name": "Wyvern",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Ghul",
+    "faction": "Monstros",
+    "name": "Ghul",
+    "strength": 1,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Monstros:Avallac´h",
+    "faction": "Monstros",
+    "name": "Avallac´h",
+    "strength": 0,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Monstros:Kuh",
+    "faction": "Monstros",
+    "name": "Kuh",
+    "strength": 0,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Invocador",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Emhyr var Emreis: Invasor des Nordens",
+    "faction": "Nilfgaard",
+    "name": "Emhyr var Emreis: Invasor des Nordens",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Emhyr var Emreis: Kaiser von Nilfgaard",
+    "faction": "Nilfgaard",
+    "name": "Emhyr var Emreis: Kaiser von Nilfgaard",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Emhyr var Emreis: Kaiserliche Majestät",
+    "faction": "Nilfgaard",
+    "name": "Emhyr var Emreis: Kaiserliche Majestät",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Emhyr var Emreis: Der Unbarmherzige",
+    "faction": "Nilfgaard",
+    "name": "Emhyr var Emreis: Der Unbarmherzige",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Emhyr var Emreis: Die Weiße Flamme",
+    "faction": "Nilfgaard",
+    "name": "Emhyr var Emreis: Die Weiße Flamme",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Klirrende Kälte",
+    "faction": "Nilfgaard",
+    "name": "Klirrende Kälte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Gutes Wetter",
+    "faction": "Nilfgaard",
+    "name": "Gutes Wetter",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Horn des Kommandanten",
+    "faction": "Nilfgaard",
+    "name": "Horn des Kommandanten",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Trompa do Comandante",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Finte",
+    "faction": "Nilfgaard",
+    "name": "Finte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Isca",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Extrem dichter Nebel Nebel",
+    "faction": "Nilfgaard",
+    "name": "Extrem dichter Nebel Nebel",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Verbrennen",
+    "faction": "Nilfgaard",
+    "name": "Verbrennen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Queimar",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Skellige-Sturm",
+    "faction": "Nilfgaard",
+    "name": "Skellige-Sturm",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Strömender Regen",
+    "faction": "Nilfgaard",
+    "name": "Strömender Regen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Geralt von Riva",
+    "faction": "Nilfgaard",
+    "name": "Geralt von Riva",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Cirilla Fiona Elen Riannon",
+    "faction": "Nilfgaard",
+    "name": "Cirilla Fiona Elen Riannon",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Schütze der Schwarzen Infanterie",
+    "faction": "Nilfgaard",
+    "name": "Schütze der Schwarzen Infanterie",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Nilfgaard:Schwerer Feuerskorpion",
+    "faction": "Nilfgaard",
+    "name": "Schwerer Feuerskorpion",
+    "strength": 10,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Letho von Gulet",
+    "faction": "Nilfgaard",
+    "name": "Letho von Gulet",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Menno Coehoorn",
+    "faction": "Nilfgaard",
+    "name": "Menno Coehoorn",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Morvran Voorhis",
+    "faction": "Nilfgaard",
+    "name": "Morvran Voorhis",
+    "strength": 10,
+    "row": "Cerco",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Tibor Eggebracht",
+    "faction": "Nilfgaard",
+    "name": "Tibor Eggebracht",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Stefan Skellen",
+    "faction": "Nilfgaard",
+    "name": "Stefan Skellen",
+    "strength": 9,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Gehörnte Verteidigungskraft",
+    "faction": "Nilfgaard",
+    "name": "Gehörnte Verteidigungskraft",
+    "strength": 8,
+    "row": "Corpo a corpo",
+    "category": "Reserva",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Nilfgaard:Triss Merigold",
+    "faction": "Nilfgaard",
+    "name": "Triss Merigold",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Yennefer von Vengerberg",
+    "faction": "Nilfgaard",
+    "name": "Yennefer von Vengerberg",
+    "strength": 7,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Villentretenmerth",
+    "faction": "Nilfgaard",
+    "name": "Villentretenmerth",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Shilard Fitz-Oesterlen",
+    "faction": "Nilfgaard",
+    "name": "Shilard Fitz-Oesterlen",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Olgierd von Everec",
+    "faction": "Nilfgaard",
+    "name": "Olgierd von Everec",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade + Moral",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Vesemir",
+    "faction": "Nilfgaard",
+    "name": "Vesemir",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Assire var Anahid",
+    "faction": "Nilfgaard",
+    "name": "Assire var Anahid",
+    "strength": 6,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Cahir Mawr Dyffryn aep Ceallach",
+    "faction": "Nilfgaard",
+    "name": "Cahir Mawr Dyffryn aep Ceallach",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Fringilla Vigo",
+    "faction": "Nilfgaard",
+    "name": "Fringilla Vigo",
+    "strength": 6,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Ingenieur",
+    "faction": "Nilfgaard",
+    "name": "Ingenieur",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Emiel Regis Rohellec Terzieff Godefroy",
+    "faction": "Nilfgaard",
+    "name": "Emiel Regis Rohellec Terzieff Godefroy",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Zoltan Chivay",
+    "faction": "Nilfgaard",
+    "name": "Zoltan Chivay",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Renuald aep Matsen",
+    "faction": "Nilfgaard",
+    "name": "Renuald aep Matsen",
+    "strength": 5,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Junger Gesandter",
+    "faction": "Nilfgaard",
+    "name": "Junger Gesandter",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 2
+  },
+  {
+    "id": "Nilfgaard:Feuerskorpion",
+    "faction": "Nilfgaard",
+    "name": "Feuerskorpion",
+    "strength": 5,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Gaunter O´Dim: Finsternis",
+    "faction": "Nilfgaard",
+    "name": "Gaunter O´Dim: Finsternis",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Cynthia",
+    "faction": "Nilfgaard",
+    "name": "Cynthia",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Rainfarn",
+    "faction": "Nilfgaard",
+    "name": "Rainfarn",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Vanhemar",
+    "faction": "Nilfgaard",
+    "name": "Vanhemar",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Vattier de Rideaux",
+    "faction": "Nilfgaard",
+    "name": "Vattier de Rideaux",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Carta bônus",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Plötze",
+    "faction": "Nilfgaard",
+    "name": "Plötze",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Impera-Brigade",
+    "faction": "Nilfgaard",
+    "name": "Impera-Brigade",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 4
+  },
+  {
+    "id": "Nilfgaard:Morteisen",
+    "faction": "Nilfgaard",
+    "name": "Morteisen",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Puttkammer",
+    "faction": "Nilfgaard",
+    "name": "Puttkammer",
+    "strength": 3,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Verrottendes Mangonel",
+    "faction": "Nilfgaard",
+    "name": "Verrottendes Mangonel",
+    "strength": 3,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Gaunter O´Dim",
+    "faction": "Nilfgaard",
+    "name": "Gaunter O´Dim",
+    "strength": 2,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Rittersporn",
+    "faction": "Nilfgaard",
+    "name": "Rittersporn",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Trompa do Comandante",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Albrich",
+    "faction": "Nilfgaard",
+    "name": "Albrich",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Nausicaa-Kavalleriebrigade",
+    "faction": "Nilfgaard",
+    "name": "Nausicaa-Kavalleriebrigade",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Nilfgaard:Sweers",
+    "faction": "Nilfgaard",
+    "name": "Sweers",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Vreemde",
+    "faction": "Nilfgaard",
+    "name": "Vreemde",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Bogenschützen",
+    "faction": "Nilfgaard",
+    "name": "Bogenschützen",
+    "strength": 1,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Médico",
+    "count": 2
+  },
+  {
+    "id": "Nilfgaard:Avallac´h",
+    "faction": "Nilfgaard",
+    "name": "Avallac´h",
+    "strength": 0,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Unterstützung",
+    "faction": "Nilfgaard",
+    "name": "Unterstützung",
+    "strength": 0,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Nilfgaard:Kuh",
+    "faction": "Nilfgaard",
+    "name": "Kuh",
+    "strength": 0,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Invocador",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Foltest: Sohn des Medell",
+    "faction": "Reinos do Norte",
+    "name": "Foltest: Sohn des Medell",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Foltest: König Temeriens",
+    "faction": "Reinos do Norte",
+    "name": "Foltest: König Temeriens",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Foltest: Der Anführer des Nordens",
+    "faction": "Reinos do Norte",
+    "name": "Foltest: Der Anführer des Nordens",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Foltest: Der Belagerer",
+    "faction": "Reinos do Norte",
+    "name": "Foltest: Der Belagerer",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Foltest: Der Stählerne",
+    "faction": "Reinos do Norte",
+    "name": "Foltest: Der Stählerne",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Klirrende Kälte",
+    "faction": "Reinos do Norte",
+    "name": "Klirrende Kälte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Gutes Wetter",
+    "faction": "Reinos do Norte",
+    "name": "Gutes Wetter",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Horn des Kommandanten",
+    "faction": "Reinos do Norte",
+    "name": "Horn des Kommandanten",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Trompa do Comandante",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Finte",
+    "faction": "Reinos do Norte",
+    "name": "Finte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Isca",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Extrem dichter Nebel Nebel",
+    "faction": "Reinos do Norte",
+    "name": "Extrem dichter Nebel Nebel",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Verbrennen",
+    "faction": "Reinos do Norte",
+    "name": "Verbrennen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Queimar",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Skellige-Sturm",
+    "faction": "Reinos do Norte",
+    "name": "Skellige-Sturm",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Strömender Regen",
+    "faction": "Reinos do Norte",
+    "name": "Strömender Regen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Geralt von Riva",
+    "faction": "Reinos do Norte",
+    "name": "Geralt von Riva",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Cirilla Fiona Elen Riannon",
+    "faction": "Reinos do Norte",
+    "name": "Cirilla Fiona Elen Riannon",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Esterad Thyssen",
+    "faction": "Reinos do Norte",
+    "name": "Esterad Thyssen",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:John Natalis",
+    "faction": "Reinos do Norte",
+    "name": "John Natalis",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Philippa Eilhart",
+    "faction": "Reinos do Norte",
+    "name": "Philippa Eilhart",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Vernon Roche",
+    "faction": "Reinos do Norte",
+    "name": "Vernon Roche",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Katapult",
+    "faction": "Reinos do Norte",
+    "name": "Katapult",
+    "strength": 8,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 2
+  },
+  {
+    "id": "Reinos do Norte:Gehörnte Verteidigungskraft",
+    "faction": "Reinos do Norte",
+    "name": "Gehörnte Verteidigungskraft",
+    "strength": 8,
+    "row": "Corpo a corpo",
+    "category": "Reserva",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Reinos do Norte:Triss Merigold",
+    "faction": "Reinos do Norte",
+    "name": "Triss Merigold",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Yennefer von Vengerberg",
+    "faction": "Reinos do Norte",
+    "name": "Yennefer von Vengerberg",
+    "strength": 7,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Villentretenmerth",
+    "faction": "Reinos do Norte",
+    "name": "Villentretenmerth",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Olgierd von Everec",
+    "faction": "Reinos do Norte",
+    "name": "Olgierd von Everec",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade + Moral",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Vesemir",
+    "faction": "Reinos do Norte",
+    "name": "Vesemir",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Belagerungsturm",
+    "faction": "Reinos do Norte",
+    "name": "Belagerungsturm",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Dethmold",
+    "faction": "Reinos do Norte",
+    "name": "Dethmold",
+    "strength": 6,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Tribok",
+    "faction": "Reinos do Norte",
+    "name": "Tribok",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Reinos do Norte:Ballista",
+    "faction": "Reinos do Norte",
+    "name": "Ballista",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Reinos do Norte:Emiel Regis Rohellec Terzieff Godefroy",
+    "faction": "Reinos do Norte",
+    "name": "Emiel Regis Rohellec Terzieff Godefroy",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Zoltan Chivay",
+    "faction": "Reinos do Norte",
+    "name": "Zoltan Chivay",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Drachenjäger aus Crinfrid",
+    "faction": "Reinos do Norte",
+    "name": "Drachenjäger aus Crinfrid",
+    "strength": 5,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Heilerin des grauen Fähnleins",
+    "faction": "Reinos do Norte",
+    "name": "Heilerin des grauen Fähnleins",
+    "strength": 5,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Keira Metz",
+    "faction": "Reinos do Norte",
+    "name": "Keira Metz",
+    "strength": 5,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Fürst Stennis",
+    "faction": "Reinos do Norte",
+    "name": "Fürst Stennis",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Siegfried von Denesle",
+    "faction": "Reinos do Norte",
+    "name": "Siegfried von Denesle",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Sheala De Tancarville",
+    "faction": "Reinos do Norte",
+    "name": "Sheala De Tancarville",
+    "strength": 5,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Ves",
+    "faction": "Reinos do Norte",
+    "name": "Ves",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Gaunter O´Dim: Finsternis",
+    "faction": "Reinos do Norte",
+    "name": "Gaunter O´Dim: Finsternis",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Blaue Streifen",
+    "faction": "Reinos do Norte",
+    "name": "Blaue Streifen",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Sabrina Glevissig",
+    "faction": "Reinos do Norte",
+    "name": "Sabrina Glevissig",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Sheldon Skaggs",
+    "faction": "Reinos do Norte",
+    "name": "Sheldon Skaggs",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Sigismund Dijkstra",
+    "faction": "Reinos do Norte",
+    "name": "Sigismund Dijkstra",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Plötze",
+    "faction": "Reinos do Norte",
+    "name": "Plötze",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Gaunter O´Dim",
+    "faction": "Reinos do Norte",
+    "name": "Gaunter O´Dim",
+    "strength": 2,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Rittersporn",
+    "faction": "Reinos do Norte",
+    "name": "Rittersporn",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Trompa do Comandante",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Yarpen Zigrin",
+    "faction": "Reinos do Norte",
+    "name": "Yarpen Zigrin",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Kaedwen-Belagerungsexperte",
+    "faction": "Reinos do Norte",
+    "name": "Kaedwen-Belagerungsexperte",
+    "strength": 1,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Moral",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Gottverdammte Infanterie",
+    "faction": "Reinos do Norte",
+    "name": "Gottverdammte Infanterie",
+    "strength": 1,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Reinos do Norte:Redanischer Fußsoldat",
+    "faction": "Reinos do Norte",
+    "name": "Redanischer Fußsoldat",
+    "strength": 1,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Reinos do Norte:Thaler",
+    "faction": "Reinos do Norte",
+    "name": "Thaler",
+    "strength": 1,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Avallac´h",
+    "faction": "Reinos do Norte",
+    "name": "Avallac´h",
+    "strength": 0,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Reinos do Norte:Kuh",
+    "faction": "Reinos do Norte",
+    "name": "Kuh",
+    "strength": 0,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Invocador",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Francesca Findabair: Gänseblümchen des Tals",
+    "faction": "Scoia'tael",
+    "name": "Francesca Findabair: Gänseblümchen des Tals",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Francesca Findabair: Hoffnung der Aen Seidhe",
+    "faction": "Scoia'tael",
+    "name": "Francesca Findabair: Hoffnung der Aen Seidhe",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Francesca Findabair: Reinblütige Elfin",
+    "faction": "Scoia'tael",
+    "name": "Francesca Findabair: Reinblütige Elfin",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Francesca Findabair: Königin Dol Blathannas",
+    "faction": "Scoia'tael",
+    "name": "Francesca Findabair: Königin Dol Blathannas",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Francesca Findabair: Die Schöne",
+    "faction": "Scoia'tael",
+    "name": "Francesca Findabair: Die Schöne",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Klirrende Kälte",
+    "faction": "Scoia'tael",
+    "name": "Klirrende Kälte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Gutes Wetter",
+    "faction": "Scoia'tael",
+    "name": "Gutes Wetter",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Horn des Kommandanten",
+    "faction": "Scoia'tael",
+    "name": "Horn des Kommandanten",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Trompa do Comandante",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Finte",
+    "faction": "Scoia'tael",
+    "name": "Finte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Isca",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Extrem dichter Nebel Nebel",
+    "faction": "Scoia'tael",
+    "name": "Extrem dichter Nebel Nebel",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Verbrennen",
+    "faction": "Scoia'tael",
+    "name": "Verbrennen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Queimar",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Skellige-Sturm",
+    "faction": "Scoia'tael",
+    "name": "Skellige-Sturm",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Strömender Regen",
+    "faction": "Scoia'tael",
+    "name": "Strömender Regen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Geralt von Riva",
+    "faction": "Scoia'tael",
+    "name": "Geralt von Riva",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Cirilla Fiona Elen Riannon",
+    "faction": "Scoia'tael",
+    "name": "Cirilla Fiona Elen Riannon",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Eithné",
+    "faction": "Scoia'tael",
+    "name": "Eithné",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Milva",
+    "faction": "Scoia'tael",
+    "name": "Milva",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Moral",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Iorveth",
+    "faction": "Scoia'tael",
+    "name": "Iorveth",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Isengrim Faoiltiarna",
+    "faction": "Scoia'tael",
+    "name": "Isengrim Faoiltiarna",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Moral",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Saesenthessis",
+    "faction": "Scoia'tael",
+    "name": "Saesenthessis",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Schirrú",
+    "faction": "Scoia'tael",
+    "name": "Schirrú",
+    "strength": 8,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Gehörnte Verteidigungskraft",
+    "faction": "Scoia'tael",
+    "name": "Gehörnte Verteidigungskraft",
+    "strength": 8,
+    "row": "Corpo a corpo",
+    "category": "Reserva",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Scoia'tael:Triss Merigold",
+    "faction": "Scoia'tael",
+    "name": "Triss Merigold",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Yennefer von Vengerberg",
+    "faction": "Scoia'tael",
+    "name": "Yennefer von Vengerberg",
+    "strength": 7,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Villentretenmerth",
+    "faction": "Scoia'tael",
+    "name": "Villentretenmerth",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Olgierd von Everec",
+    "faction": "Scoia'tael",
+    "name": "Olgierd von Everec",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade + Moral",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Vesemir",
+    "faction": "Scoia'tael",
+    "name": "Vesemir",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Barclay Els",
+    "faction": "Scoia'tael",
+    "name": "Barclay Els",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Dennis Cranmer",
+    "faction": "Scoia'tael",
+    "name": "Dennis Cranmer",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Dol-Blathanna Späher",
+    "faction": "Scoia'tael",
+    "name": "Dol-Blathanna Späher",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Filavandrel Aén Fidháil",
+    "faction": "Scoia'tael",
+    "name": "Filavandrel Aén Fidháil",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Ida Emean aep Sivney",
+    "faction": "Scoia'tael",
+    "name": "Ida Emean aep Sivney",
+    "strength": 6,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Yaevinn",
+    "faction": "Scoia'tael",
+    "name": "Yaevinn",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Emiel Regis Rohellec Terzieff Godefroy",
+    "faction": "Scoia'tael",
+    "name": "Emiel Regis Rohellec Terzieff Godefroy",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Zoltan Chivay",
+    "faction": "Scoia'tael",
+    "name": "Zoltan Chivay",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Havekar-Unterstützer",
+    "faction": "Scoia'tael",
+    "name": "Havekar-Unterstützer",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Mahakam Verteidiger",
+    "faction": "Scoia'tael",
+    "name": "Mahakam Verteidiger",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 5
+  },
+  {
+    "id": "Scoia'tael:Vrihedd-Brigade",
+    "faction": "Scoia'tael",
+    "name": "Vrihedd-Brigade",
+    "strength": 5,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 2
+  },
+  {
+    "id": "Scoia'tael:Gaunter O´Dim: Finsternis",
+    "faction": "Scoia'tael",
+    "name": "Gaunter O´Dim: Finsternis",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Dol Blathanna Schütze",
+    "faction": "Scoia'tael",
+    "name": "Dol Blathanna Schütze",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Vrihedd-Kadett",
+    "faction": "Scoia'tael",
+    "name": "Vrihedd-Kadett",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Plötze",
+    "faction": "Scoia'tael",
+    "name": "Plötze",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Ciaran aep Easnillien",
+    "faction": "Scoia'tael",
+    "name": "Ciaran aep Easnillien",
+    "strength": 3,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Zwergen Scharmützler",
+    "faction": "Scoia'tael",
+    "name": "Zwergen Scharmützler",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Gaunter O´Dim",
+    "faction": "Scoia'tael",
+    "name": "Gaunter O´Dim",
+    "strength": 2,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Rittersporn",
+    "faction": "Scoia'tael",
+    "name": "Rittersporn",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Trompa do Comandante",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Elfen-Scharmützler",
+    "faction": "Scoia'tael",
+    "name": "Elfen-Scharmützler",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Toruviel",
+    "faction": "Scoia'tael",
+    "name": "Toruviel",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Riordain",
+    "faction": "Scoia'tael",
+    "name": "Riordain",
+    "strength": 1,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Avallac´h",
+    "faction": "Scoia'tael",
+    "name": "Avallac´h",
+    "strength": 0,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Scoia'tael:Haveka-Heiler",
+    "faction": "Scoia'tael",
+    "name": "Haveka-Heiler",
+    "strength": 0,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Médico",
+    "count": 3
+  },
+  {
+    "id": "Scoia'tael:Kuh",
+    "faction": "Scoia'tael",
+    "name": "Kuh",
+    "strength": 0,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Invocador",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Eist Tuirseach König von Cintra",
+    "faction": "Skellige",
+    "name": "Eist Tuirseach König von Cintra",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Harald An Craite Der Krüppel",
+    "faction": "Skellige",
+    "name": "Harald An Craite Der Krüppel",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Arnjolf Der Vatermörder",
+    "faction": "Skellige",
+    "name": "Arnjolf Der Vatermörder",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Skellige:König Bran Der Einiger",
+    "faction": "Skellige",
+    "name": "König Bran Der Einiger",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Crach an Craite Das Wildschwein der Meere",
+    "faction": "Skellige",
+    "name": "Crach an Craite Das Wildschwein der Meere",
+    "strength": null,
+    "row": "",
+    "category": "Líder",
+    "ability": "Habilidade de líder",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Mardroeme",
+    "faction": "Skellige",
+    "name": "Mardroeme",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Mardroeme",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Klirrende Kälte",
+    "faction": "Skellige",
+    "name": "Klirrende Kälte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Gutes Wetter",
+    "faction": "Skellige",
+    "name": "Gutes Wetter",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Horn des Kommandanten",
+    "faction": "Skellige",
+    "name": "Horn des Kommandanten",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Trompa do Comandante",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Finte",
+    "faction": "Skellige",
+    "name": "Finte",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Isca",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Extrem dichter Nebel Nebel",
+    "faction": "Skellige",
+    "name": "Extrem dichter Nebel Nebel",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Verbrennen",
+    "faction": "Skellige",
+    "name": "Verbrennen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Queimar",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Skellige-Sturm",
+    "faction": "Skellige",
+    "name": "Skellige-Sturm",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Strömender Regen",
+    "faction": "Skellige",
+    "name": "Strömender Regen",
+    "strength": null,
+    "row": "",
+    "category": "Especial",
+    "ability": "Clima",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Geralt von Riva",
+    "faction": "Skellige",
+    "name": "Geralt von Riva",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Cirilla Fiona Elen Riannon",
+    "faction": "Skellige",
+    "name": "Cirilla Fiona Elen Riannon",
+    "strength": 15,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Transformierter Vildkaarl",
+    "faction": "Skellige",
+    "name": "Transformierter Vildkaarl",
+    "strength": 14,
+    "row": "Corpo a corpo",
+    "category": "Reserva",
+    "ability": "Moral",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Olaf",
+    "faction": "Skellige",
+    "name": "Olaf",
+    "strength": 12,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade + Moral",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Hemdall",
+    "faction": "Skellige",
+    "name": "Hemdall",
+    "strength": 11,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Cerys",
+    "faction": "Skellige",
+    "name": "Cerys",
+    "strength": 10,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Hjalmar",
+    "faction": "Skellige",
+    "name": "Hjalmar",
+    "strength": 10,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Mäussack",
+    "faction": "Skellige",
+    "name": "Mäussack",
+    "strength": 8,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Mardroeme",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Gehörnte Verteidigungskraft",
+    "faction": "Skellige",
+    "name": "Gehörnte Verteidigungskraft",
+    "strength": 8,
+    "row": "Corpo a corpo",
+    "category": "Reserva",
+    "ability": "Sem habilidade",
+    "count": 2
+  },
+  {
+    "id": "Skellige:Transformierter junger Vildkaarl",
+    "faction": "Skellige",
+    "name": "Transformierter junger Vildkaarl",
+    "strength": 8,
+    "row": "À distância",
+    "category": "Reserva",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Triss Merigold",
+    "faction": "Skellige",
+    "name": "Triss Merigold",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Yennefer von Vengerberg",
+    "faction": "Skellige",
+    "name": "Yennefer von Vengerberg",
+    "strength": 7,
+    "row": "À distância",
+    "category": "Herói",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Villentretenmerth",
+    "faction": "Skellige",
+    "name": "Villentretenmerth",
+    "strength": 7,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Olgierd von Everec",
+    "faction": "Skellige",
+    "name": "Olgierd von Everec",
+    "strength": 6,
+    "row": "À distância / corpo a corpo",
+    "category": "Unidade",
+    "ability": "Agilidade + Moral",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Vesemir",
+    "faction": "Skellige",
+    "name": "Vesemir",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Lugos der Irre",
+    "faction": "Skellige",
+    "name": "Lugos der Irre",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Krieger des Clans An Craite",
+    "faction": "Skellige",
+    "name": "Krieger des Clans An Craite",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Bogenschütze des Clans Brokvar",
+    "faction": "Skellige",
+    "name": "Bogenschütze des Clans Brokvar",
+    "strength": 6,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Pirat des Dimum-Clans",
+    "faction": "Skellige",
+    "name": "Pirat des Dimum-Clans",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Queimar",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Blaujung Lugos",
+    "faction": "Skellige",
+    "name": "Blaujung Lugos",
+    "strength": 6,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Kriegslangschiff",
+    "faction": "Skellige",
+    "name": "Kriegslangschiff",
+    "strength": 6,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Emiel Regis Rohellec Terzieff Godefroy",
+    "faction": "Skellige",
+    "name": "Emiel Regis Rohellec Terzieff Godefroy",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Zoltan Chivay",
+    "faction": "Skellige",
+    "name": "Zoltan Chivay",
+    "strength": 5,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Gaunter O´Dim: Finsternis",
+    "faction": "Skellige",
+    "name": "Gaunter O´Dim: Finsternis",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Berserker",
+    "faction": "Skellige",
+    "name": "Berserker",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Berserker",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Schildmaid des Clans Drummond",
+    "faction": "Skellige",
+    "name": "Schildmaid des Clans Drummond",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Laço estreito",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Skalde des Clans Heymaey",
+    "faction": "Skellige",
+    "name": "Skalde des Clans Heymaey",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Schmied des Clans Tordarroch",
+    "faction": "Skellige",
+    "name": "Schmied des Clans Tordarroch",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Donar an Hindar",
+    "faction": "Skellige",
+    "name": "Donar an Hindar",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Holger Schwarzhand",
+    "faction": "Skellige",
+    "name": "Holger Schwarzhand",
+    "strength": 4,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Leichtes Langschiff",
+    "faction": "Skellige",
+    "name": "Leichtes Langschiff",
+    "strength": 4,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Svanrige",
+    "faction": "Skellige",
+    "name": "Svanrige",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Udalryk",
+    "faction": "Skellige",
+    "name": "Udalryk",
+    "strength": 4,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Plötze",
+    "faction": "Skellige",
+    "name": "Plötze",
+    "strength": 3,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Sem habilidade",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Gaunter O´Dim",
+    "faction": "Skellige",
+    "name": "Gaunter O´Dim",
+    "strength": 2,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Convocação",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Rittersporn",
+    "faction": "Skellige",
+    "name": "Rittersporn",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Trompa do Comandante",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Birna Bran",
+    "faction": "Skellige",
+    "name": "Birna Bran",
+    "strength": 2,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Médico",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Draig Bon-Dhu",
+    "faction": "Skellige",
+    "name": "Draig Bon-Dhu",
+    "strength": 2,
+    "row": "Cerco",
+    "category": "Unidade",
+    "ability": "Trompa do Comandante",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Junger Berserker",
+    "faction": "Skellige",
+    "name": "Junger Berserker",
+    "strength": 2,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Berserker",
+    "count": 3
+  },
+  {
+    "id": "Skellige:Avallac´h",
+    "faction": "Skellige",
+    "name": "Avallac´h",
+    "strength": 0,
+    "row": "Corpo a corpo",
+    "category": "Herói",
+    "ability": "Espião",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Kambi",
+    "faction": "Skellige",
+    "name": "Kambi",
+    "strength": 0,
+    "row": "Corpo a corpo",
+    "category": "Unidade",
+    "ability": "Invocador",
+    "count": 1
+  },
+  {
+    "id": "Skellige:Kuh",
+    "faction": "Skellige",
+    "name": "Kuh",
+    "strength": 0,
+    "row": "À distância",
+    "category": "Unidade",
+    "ability": "Invocador",
+    "count": 1
+  }
+]

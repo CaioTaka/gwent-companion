@@ -26,7 +26,8 @@ data class UnitCard(
     val row: CombatRow,
     val player: Int,
     val hero: Boolean,
-    val ability: UnitAbility = UnitAbility.NONE
+    val ability: UnitAbility = UnitAbility.NONE,
+    val category: String = "Unidade"
 )
 
 /** Applies ongoing effects in the order specified on page 14 of the rulebook. */
