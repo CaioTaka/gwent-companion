@@ -47,4 +47,3 @@ Abra esta pasta no Android Studio ou no VS Code com as ferramentas Android insta
 
 As regras implementadas foram consultadas no manual em inglês da 2ª edição. A resolução de efeitos ainda é parcial; o app não substitui o manual completo.
 
-
